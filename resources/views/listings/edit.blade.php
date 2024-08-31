@@ -118,7 +118,7 @@
                             @enderror
                         </div>
 
-                        {{-- <div class="mb-6">
+                        <div class="mb-6">
                             <label for="logo" class="inline-block text-lg mb-2">
                                 Company Logo
                             </label>
@@ -127,7 +127,17 @@
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="logo"
                             />
-                        </div> --}}
+
+                            <img
+                                class="w-48 mr-6 mb-6"
+                                src={{$listing->logo ? asset("storage/" . $listing->logo) : asset("images/no-image.png")}}
+                                alt=""
+                            />
+
+                            @error('logo')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
 
                         <div class="mb-6">
                             <label
@@ -141,7 +151,7 @@
                                 name="description"
                                 rows="10"
                                 placeholder="Include tasks, requirements, salary, etc"
-                            >{{old("description")}}</textarea>
+                            >{{$listing->description}}</textarea>
 
                             @error('description')
                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -152,7 +162,7 @@
                             <button
                                 class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                             >
-                                Create Job
+                                Update Job
                             </button>
 
                             <a href="/" class="text-black ml-4"> Back </a>
